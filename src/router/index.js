@@ -1,12 +1,15 @@
-// 登陆页面
-import Login from '../components/Login.vue'
-// 忘记密码页面
-//import Password from '../components/password.vue'
-// （忘记密码）重置密码页面
-//import ResetPassword from '../components/ResetPassword.vue'
+// 账号页面
+import Login from '../components/Account/Login.vue'
+import Password from '../components/Account/Password.vue'
+import Register from '../components/Account/Register.vue'
 
-
+//学生具体页面
 import StudentSide from '../components/Homepage/StudentSide.vue'
+import Courses   from '../components/DetailContent/Student/Courses.vue'
+import myCourses from '../components/DetailContent/Student/myCourses.vue'
+
+
+
 
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -17,8 +20,24 @@ const routes = [{
 		path: '/login',
 		component: Login
 	},{
-		path: '/student',
-		component: StudentSide
+		path: '/password',
+		component: Password
+	},{
+		path: '/register',
+		component: Register
+	},
+	
+	
+	{
+		path: '/student/',
+		component: StudentSide,
+		children: [{
+			path: 'courses',
+			component: Courses,
+		},{
+			path: 'mycourses',
+			component: myCourses,
+		}]
 	}
 ]
 
