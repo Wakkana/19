@@ -51,8 +51,8 @@
                   课程中心
                 </span>
               </template>
-              <a-menu-item key="courses" @click="router.push({path:'/student/courses'})">全部课程</a-menu-item>
-              <a-menu-item key="mycourses" @click="router.push({path:'/student/mycourses'})">我的课程</a-menu-item>
+              <a-menu-item key="mycourses" @click="router.push({path:'/teacher/mycourses'})">我的课程</a-menu-item>
+              <a-menu-item key="createcourses" @click="router.push({path:'/teacher/createcourses'})">创建课程</a-menu-item>
               <a-menu-item key="3">option3</a-menu-item>
               <a-menu-item key="4">option4</a-menu-item>
             </a-sub-menu>
@@ -95,7 +95,7 @@ export default ({
   },
   setup() {
     let mm = new Map([
-      ['courses', '全部课程'],
+      ['createcourses', '创建课程'],
       ['mycourses', '我的课程']
     ]);
     const router = useRouter();

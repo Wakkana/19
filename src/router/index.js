@@ -2,13 +2,16 @@
 import Login from '../components/Account/Login.vue'
 import Password from '../components/Account/Password.vue'
 import Register from '../components/Account/Register.vue'
+import UserInfo from '../components/Homepage/UserInfo.vue'
 
 //学生具体页面
 import StudentSide from '../components/Homepage/StudentSide.vue'
 import Courses   from '../components/DetailContent/Student/Courses.vue'
-import myCourses from '../components/DetailContent/Student/myCourses.vue'
+import myCourses1 from '../components/DetailContent/Student/myCourses.vue'
 
-
+import TeacherSide from '../components/Homepage/TeacherSide.vue'
+import createCourses   from '../components/DetailContent/Teacher/CreateCourses.vue'
+import myCourses2 from '../components/DetailContent/Teacher/myCourses.vue'
 
 
 import { createRouter, createWebHistory } from 'vue-router'
@@ -25,18 +28,33 @@ const routes = [{
 	},{
 		path: '/register',
 		component: Register
+	},{
+		path: '/userinfo/:id',
+		component: UserInfo
 	},
 	
 	
 	{
-		path: '/student/',
+		path: '/student',
 		component: StudentSide,
 		children: [{
 			path: 'courses',
 			component: Courses,
 		},{
 			path: 'mycourses',
-			component: myCourses,
+			component: myCourses1,
+		}]
+	},
+
+	{
+		path: '/teacher',
+		component: TeacherSide,
+		children: [{
+			path: 'createcourses',
+			component: createCourses,
+		},{
+			path: 'mycourses',
+			component: myCourses2,
 		}]
 	}
 ]

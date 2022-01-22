@@ -34,49 +34,11 @@
     <a-layout-content style="padding: 20px 12%" class="content">
       <a-breadcrumb style="margin: 16px 0">
         <a-breadcrumb-item>首页</a-breadcrumb-item>
-        <a-breadcrumb-item>课程中心</a-breadcrumb-item>
-        <a-breadcrumb-item>{{mm.get(currSelected[0])}}</a-breadcrumb-item>
+        <a-breadcrumb-item>个人中心</a-breadcrumb-item>
       </a-breadcrumb>
       <a-layout style="background: #fff; height: 70vh">
-        <a-layout-sider width="200" style="background: #fff">
-          <a-menu
-            :selectedKeys="currSelected"
-            :openKeys="openKeys"
-            mode="inline"
-          >
-            <a-sub-menu key="sub1">
-              <template #title>
-                <span>
-                  <user-outlined />
-                  课程中心
-                </span>
-              </template>
-              <a-menu-item key="courses" @click="router.push({path:'/student/courses'})">全部课程</a-menu-item>
-              <a-menu-item key="mycourses" @click="router.push({path:'/student/mycourses'})">我的课程</a-menu-item>
-              <a-menu-item key="3">option3</a-menu-item>
-              <a-menu-item key="4">option4</a-menu-item>
-            </a-sub-menu>
-            <a-sub-menu key="sub2">
-              <template #title> 
-                <span>
-                  <laptop-outlined />
-                  subnav 2
-                </span>
-              </template>
-              <a-menu-item key="5">option5</a-menu-item>
-              <a-menu-item key="6">option6</a-menu-item>
-              <a-menu-item key="7">option7</a-menu-item>
-              <a-menu-item key="8">option8</a-menu-item>
-            </a-sub-menu>
-          </a-menu>
-        </a-layout-sider>
-
-        <router-view v-slot="{ Component }">
-          <keep-alive>
-            <component :is="Component"/>
-          </keep-alive>
-        </router-view>
-
+        <!-- 主要内容区域 -->
+        <a-switch :checked="modifying" />
       </a-layout>
     </a-layout-content>
     <a-layout-footer style="text-align: center;">
@@ -85,24 +47,16 @@
   </a-layout>
 </template>
 <script scoped>
-import { UserOutlined, LaptopOutlined } from '@ant-design/icons-vue';
-import { ref, inject, provide } from 'vue';
-import { useRouter} from 'vue-router'
+import { UserOutlined } from '@ant-design/icons-vue';
+import { inject, ref } from 'vue';
+import { useRouter } from 'vue-router'
 export default ({
   components: {
     UserOutlined,
-    LaptopOutlined, 
   },
   setup() {
-    let mm = new Map([
-      ['courses', '全部课程'],
-      ['mycourses', '我的课程']
-    ]);
+    const modifying = ref(false);
     const router = useRouter();
-
-    const currSelected = ref(['courses']);
-    const openKeys = ref(['sub1']);
-    provide('currSelected', currSelected);
     const info = inject('info')
 
     function logout() {
@@ -111,12 +65,10 @@ export default ({
     }
 
     return {
-      mm,
       info,
-      currSelected,
-      openKeys,
       router,
       logout,
+      modifying
     };
   },
 });
@@ -131,8 +83,6 @@ export default ({
   background-color: #3480fd;
   background-image: -webkit-radial-gradient(50% -200px,circle,#b0e0ff 0,#18a7fd 45%,#3480fd 100%);
   background-image: radial-gradient(circle at 50% -200px,#b0e0ff 0,#18a7fd 45%,#3480fd 100%);
-
-
 }
 .menu, .ant-menu.ant-menu-dark {
   background-color: rgba(0, 0, 0, 0);
@@ -140,7 +90,6 @@ export default ({
 .ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
-
 .ant-menu {
   flex: 1 0 40%;
 }
@@ -148,7 +97,6 @@ export default ({
   flex: 0 0 10%;
   color: white;
 }
-
 .main-container {
   display: flex;
   flex-direction: column;
@@ -157,8 +105,9 @@ export default ({
 .ant-layout-footer {
   flex: 0 1 10%;
 }
-
 .info {
   margin-right:80px;
 }
+
+  
 </style>

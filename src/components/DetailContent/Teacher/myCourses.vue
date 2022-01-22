@@ -1,7 +1,7 @@
 <template>
   <div class="courses-container">
     <div class="hello">
-      <a>你好同学， 这是你选择的课程</a>
+      <a>你好老师， 这是你任教的课程</a>
     </div>
     <a-divider />
     <a-list item-layout="vertical" :pagination="pagination" :data-source="listData"> 
@@ -9,7 +9,7 @@
         <a-list-item key="item.title">
           <template #actions>
             <a @click="showDetail()">详情</a>
-            <a @click="quitCourse()">退课</a>
+            <a @click="quitCourse()">结课</a>
           </template>
           <CourseDetail placement="right" :closable="false" :visible="detailVisible" @close="onClose()" />
           <a-list-item-meta :description="item.description">
@@ -92,12 +92,11 @@ export default({
   flex-direction: column;
   justify-content: space-between;
 }
-.hello {
+.hello{
   flex: 0 0 6%;
   padding-top: 5px;
   padding-left: 5px;
 }
-
 .ant-list-item, .ant-list-item-no-flex{
   display: flex;
   flex-direction: row;
@@ -109,4 +108,5 @@ export default({
   margin-top: 6px;
   margin-bottom: 6px;
 }
+
 </style>

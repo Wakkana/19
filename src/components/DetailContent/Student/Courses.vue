@@ -15,8 +15,8 @@
         placeholder="搜索内容"
         style="width: 200px"
       />
-      <a-divider />
     </div>
+    <a-divider />
     <a-list item-layout="vertical" :pagination="pagination" :data-source="courses"> 
       <template #renderItem="{ item }">
         <a-list-item key="item.title">
@@ -70,14 +70,14 @@ export default ({
         description: 'Ant Design, a design language for background applications, is refined by Ant UED Teamasdjsadsahdhsahsajh.',
       });
     }
-    function onClose() {
-      detailVisible.value = false;
-    }
     function chooseCourse() {
       console.log("抢课");
     }
     function showDetail() {
       detailVisible.value = true;
+    }
+    function onClose() {
+      detailVisible.value = false;
     }
     const handleChange = value => {
       selector.value = value;
@@ -98,7 +98,7 @@ export default ({
 });
 </script>
 
-<style>
+<style scoped>
 .courses-container {
   display: flex;
   flex-direction: column;
@@ -113,7 +113,7 @@ export default ({
   justify-content: space-between;
 }
 .search-courses {
-  flex: 0 0 0%;
+  flex: 0 0 6%;
   padding-top: 0px;
   padding-left: 0px;
 }
@@ -134,16 +134,8 @@ export default ({
   padding: 0 8px;
 }
 .ant-divider {
-  margin: 8px 0;
-}
-.ant-list-item-meta-description {
-  color: #86909c;
-  font-size: 13px;
-  line-height: 22px;
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
+  flex: 0 0 1px;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 </style>
