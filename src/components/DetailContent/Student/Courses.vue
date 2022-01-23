@@ -29,7 +29,9 @@
             <template #title>
               <a :href="item.href">{{ item.title }}</a>
             </template>
+              <a :href="item.href">{{ item.title }}</a>
           </a-list-item-meta>
+          <div class="capacitynum">capacity</div>
         </a-list-item>
       </template>
     </a-list>
@@ -58,7 +60,7 @@ export default ({
       onChange: page => {
         console.log(page);
       },
-      pageSize: 6,
+      pageSize: 9,
     };
 
     /* 课程相关 */
@@ -66,8 +68,8 @@ export default ({
     const detailVisible = ref(false);
     for (let i = 0; i < 23; i++) {
       courses.value.push({
-        title: `ant design vue part ${i}`,
-        description: 'Ant Design, a design language for background applications, is refined by Ant UED Teamasdjsadsahdhsahsajh.',
+        title: `test${i}`,
+        description: ' test.',
       });
     }
     function chooseCourse() {
@@ -100,6 +102,7 @@ export default ({
 
 <style scoped>
 .courses-container {
+  flex: 1 1 80%;
   display: flex;
   flex-direction: column;
   padding: 10px 20px;
@@ -124,7 +127,7 @@ export default ({
   padding-bottom: 2px;
 }
 .ant-list-item-meta {
-  flex: 0 0 80%;
+  flex: 0 1 80%;
 }
 .ant-list-item-action {
   padding-left: 20px;
@@ -137,5 +140,10 @@ export default ({
   flex: 0 0 1px;
   margin-top: 6px;
   margin-bottom: 6px;
+}
+
+.capacitynum {
+  flex: 0 1 10%;
+  padding: 15px 25px;
 }
 </style>

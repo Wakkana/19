@@ -8,7 +8,7 @@
         mode="horizontal"
         :style="{ lineHeight: '64px' }"
       >
-        <a-menu-item key="1">首页</a-menu-item>
+        <a-menu-item key="1" @click="router.push({path:'/'})">首页</a-menu-item>
       </a-menu>
       <a-dropdown class="info" placement="bottomCenter">
         <a-avatar :size="48" style="margin-top: 8px" >
@@ -31,13 +31,13 @@
       </a-dropdown>
     </div>
       
-    <a-layout-content style="padding: 20px 12%" class="content">
+    <a-layout-content style="padding: 20px 12%">
       <a-breadcrumb style="margin: 16px 0">
         <a-breadcrumb-item>首页</a-breadcrumb-item>
         <a-breadcrumb-item>课程中心</a-breadcrumb-item>
         <a-breadcrumb-item>{{mm.get(currSelected[0])}}</a-breadcrumb-item>
       </a-breadcrumb>
-      <a-layout style="background: #fff; height: 70vh">
+      <a-layout class="mainscroll" style="background: #fff">
         <a-layout-sider width="200" style="background: #fff">
           <a-menu
             :selectedKeys="currSelected"
@@ -152,13 +152,18 @@ export default ({
 .main-container {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   height: 100vh;
 }
 .ant-layout-footer {
-  flex: 0 1 10%;
+  flex: 0 1 5%;
 }
-
+.ant-list {
+  flex: 1 0 90%;
+}
 .info {
   margin-right:80px;
 }
+
+
 </style>

@@ -51,7 +51,7 @@ export default({
       onChange: page => {
         console.log(page);
       },
-      pageSize: 6,
+      pageSize: 9,
     };
     /* 课程相关 */
     const detailVisible = ref(false);
@@ -80,6 +80,7 @@ export default({
 
 <style scoped>
 .courses-container {
+  flex: 1 1 80%;
   display: flex;
   flex-direction: column;
   padding: 10px 20px;

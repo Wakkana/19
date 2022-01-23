@@ -1,5 +1,6 @@
 <template>
   <a-layout class="main-container">
+    <h1> todo: 路由参数 </h1>
     <div class="header">
       <div class="logo">19组</div>
       <a-menu
@@ -8,7 +9,7 @@
         mode="horizontal"
         :style="{ lineHeight: '64px' }"
       >
-        <a-menu-item key="1">首页</a-menu-item>
+        <a-menu-item key="1" @click="router.push({path:'/'})">首页</a-menu-item>
       </a-menu>
       <a-dropdown class="info" placement="bottomCenter">
         <a-avatar :size="48" style="margin-top: 8px" >
@@ -31,14 +32,17 @@
       </a-dropdown>
     </div>
       
-    <a-layout-content style="padding: 20px 12%" class="content">
+    <a-layout-content style="padding: 20px 12%" \>
       <a-breadcrumb style="margin: 16px 0">
         <a-breadcrumb-item>首页</a-breadcrumb-item>
         <a-breadcrumb-item>个人中心</a-breadcrumb-item>
       </a-breadcrumb>
-      <a-layout style="background: #fff; height: 70vh">
+      <a-layout class="infoScroll mainscroll" style="background: #fff">
         <!-- 主要内容区域 -->
-        <a-switch :checked="modifying" />
+        <div class="sidebar"></div>
+        <div class="content">
+          <a-switch :checked="modifying" @click="modifying = !modifying"/>
+        </div>
       </a-layout>
     </a-layout-content>
     <a-layout-footer style="text-align: center;">
@@ -107,6 +111,27 @@ export default ({
 }
 .info {
   margin-right:80px;
+}
+
+
+.infoScroll {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  flex: 0 0 30%;
+
+}
+.content {
+  flex: 0 0 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content > button {
+  margin-left:90%;
+  width: 5%;
 }
 
   

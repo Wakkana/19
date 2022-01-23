@@ -3,50 +3,50 @@
     <div class="header">
       <div class="logo">19组</div>
     </div>
-      <div class="login">
-        <a-form
-            :model="formState"
-            name="normal_login"
-            class="login-form"
-            @finish="onFinish"
-            @finishFailed="onFinishFailed"
+    <div class="login">
+      <a-form
+          :model="formState"
+          name="normal_login"
+          class="login-form"
+          @finish="onFinish"
+          @finishFailed="onFinishFailed"
+      >
+        <a-form-item
+          name="username"
+          :rules="[{ required: true, message: 'Please input your username!' }]"
         >
-          <a-form-item
-            name="username"
-            :rules="[{ required: true, message: 'Please input your username!' }]"
-          >
-            <a-input v-model:value="formState.username" placeholder="账号">
-              <template #prefix>
-                <UserOutlined class="site-form-item-icon" />
-              </template>
-            </a-input>
-          </a-form-item>
+          <a-input v-model:value="formState.username" placeholder="账号">
+            <template #prefix>
+              <UserOutlined class="site-form-item-icon" />
+            </template>
+          </a-input>
+        </a-form-item>
 
-          <a-form-item
-            name="password"
-            :rules="[{ required: true, message: '请输入密码' }]"
-          >
-            <a-input-password v-model:value="formState.password" placeholder="密码">
-              <template #prefix>
-                <LockOutlined class="site-form-item-icon" />
-              </template>
-            </a-input-password>
-          </a-form-item>
+        <a-form-item
+          name="password"
+          :rules="[{ required: true, message: '请输入密码' }]"
+        >
+          <a-input-password v-model:value="formState.password" placeholder="密码">
+            <template #prefix>
+              <LockOutlined class="site-form-item-icon" />
+            </template>
+          </a-input-password>
+        </a-form-item>
 
-          <div class="login-form-wrap">
-            <a-form-item name="remember">
-              <a-checkbox v-model:checked="formState.remember">记住密码</a-checkbox>
-            </a-form-item>
-            <a class="login-form-forgot"  @click="router.push({path:'/password'})">忘记密码</a>
-          </div>
-
-          <a-form-item>
-            <a-button :disabled="disabled" type="primary" html-type="submit" class="login-form-button" @click="login()">
-              下一步
-            </a-button>
+        <div class="login-form-wrap">
+          <a-form-item name="remember">
+            <a-checkbox v-model:checked="formState.remember">记住密码</a-checkbox>
           </a-form-item>
-        </a-form>
-      </div>
+          <a class="login-form-forgot"  @click="router.push({path:'/password'})">忘记密码</a>
+        </div>
+
+        <a-form-item>
+          <a-button :disabled="disabled" type="primary" html-type="submit" class="login-form-button" @click="login()">
+            下一步
+          </a-button>
+        </a-form-item>
+      </a-form>
+    </div>
   </a-layout>
 </template>
 <script>
@@ -124,7 +124,6 @@ export default({
     position: relative;
     overflow: hidden;
     background-color: #3480fd;
-    background-image: url(https://security-web.cdn-go.cn/accounts.qq.com_find/777577ce/index/assets/images/bg-topbar.jpg);
     background-image: -webkit-radial-gradient(50% -200px,circle,#b0e0ff 0,#18a7fd 45%,#3480fd 100%);
     background-image: radial-gradient(circle at 50% -200px,#b0e0ff 0,#18a7fd 45%,#3480fd 100%);
 }

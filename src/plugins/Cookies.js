@@ -5,13 +5,29 @@ export function CookiesGet(name) {
 }
 
 export function CookiesSet(name, value) {
-  let a = JSON.parse(localStorage.getItem(name));
   localStorage.setItem(name, JSON.stringify(value));
   return true;
 }
 
-export function CookiesRemove(value) {
-  let a = JSON.parse(localStorage.getItem(value));
-  if (a) localStorage.removeItem(value);
+export function CookiesRemove(name) {
+  let a = JSON.parse(localStorage.getItem(name));
+  if (a) localStorage.removeItem(name);
+  return true;
+}
+
+export function SessionGet(name) {
+  let a = window.sessionStorage.getItem(name);
+  if (!a) return false;
+  return a;
+}
+
+export function SessionSet(name, value) {
+  window.sessionStorage.setItem(name, JSON.stringify(value));
+  return true;
+}
+
+export function SessionRemove(name) {
+  let a = JSON.parse(window.sessionStorage.getItem(name));
+  if (a) window.sessionStorage.removeItem(name);
   return true;
 }

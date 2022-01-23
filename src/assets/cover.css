@@ -1,10 +1,36 @@
 .ant-list-item-meta-description {
-    color: #86909c;
-    font-size: 13px;
-    line-height: 22px;
-    display: -webkit-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+	color: #86909c;
+	font-size: 13px;
+	line-height: 22px;
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+}
+
+.ant-list-vertical .ant-list-item-meta-title {
+	margin-bottom: 4px;
+}
+
+.ant-list-pagination {
+	margin-top: 15px;
+	margin-right: 10px;
+}
+
+.ant-list-vertical .ant-list-item {
+	height: 60px;
+}
+.ant-layout, .ant-layout-has-sider {
+	height: 100vh;
+	box-shadow: 0 6px 32px -7px rgba(29,102,189,.16);
+}
+.ant-layout-content {
+	display: flex;
+	flex-direction: column;
+	background-size: 100% 100%;
+}
+
+.mainscroll {
+	flex: 1 1 90%;
   }
